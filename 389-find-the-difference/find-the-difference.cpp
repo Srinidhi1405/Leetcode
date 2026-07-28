@@ -7,10 +7,8 @@ public:
         }
         for(char ch:t){
             freq[ch-'a']--;
-        }
-        for(int i=0;i<26;i++){
-            if(freq[i]<0)
-                return i+'a';
+            if(freq[ch-'a']<0)
+                return ch;
         }
         return ' ';
     }
