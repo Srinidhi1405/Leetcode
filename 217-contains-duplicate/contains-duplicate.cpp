@@ -6,7 +6,6 @@ public:
             int current=nums[i];
             if(st.find(current)!=st.end())
                 return true;
-            
             st.insert(current);
         }
         return false;
