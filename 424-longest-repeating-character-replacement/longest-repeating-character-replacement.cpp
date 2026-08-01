@@ -12,7 +12,7 @@ public:
                 freq[s[left]-'A']--;
                 left++;
             }
-            ans=max(maxfreq,right-left+1);
+            ans=max(ans,right-left+1);
         }
         return ans;
     }
