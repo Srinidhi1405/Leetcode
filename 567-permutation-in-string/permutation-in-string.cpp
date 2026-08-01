@@ -1,14 +1,15 @@
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
+        //create freq arrays
         int freq1[26]={0};
         int freq2[26]={0};
-        int left=0;
-        if(s1.size()>s2.size())
-            return false;
-        for(int right=0;right<s1.size();right++){
-            freq1[s1[right]-'a']++;
+        //fill freq1
+        for(char ch:s1){
+            freq1[ch-'a']++;
         }
+        //sliding window
+        int left=0;
         for(int right=0;right<s2.size();right++){
             freq2[s2[right]-'a']++;
             if(right-left+1>s1.size()){
@@ -16,11 +17,17 @@ public:
                 left++;
             }
             if(right-left+1==s1.size()){
-                if(equal(freq1,freq1+26,freq2))
+                bool same= true;
+                for(int i=0;i<26;i++){
+                    if(freq1[i]!=freq2[i]){
+                        same=false;
+                        break;
+                    }
+                }
+                if(same)
                     return true;
             }
-
         }
-        return false;
+        return {};
     }
 };
